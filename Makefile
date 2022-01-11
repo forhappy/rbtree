@@ -1,14 +1,15 @@
 all:rbtree-tst
 
 CFLAGS=-g -O0 -Wall
+CXXFLAGS=-g -O0 -Wall
 
-rbtree-tst:rbtree-tst.o rbtree.o
+rbtree-tst:rbtree-tst.o linux_rbtree.o
+	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS)
 
-rbtree.o:rbtree.h rbtree.c
 
-rbtree-tst.o:rbtree-tst.c
+# rbtree-tst.o:rbtree-tst.cpp 
 
 .PHONY:clean
 
 clean:
-	rm *.o rbtree-tst
+	rm -rf *.o rbtree-tst
